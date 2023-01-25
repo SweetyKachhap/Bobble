@@ -9,7 +9,7 @@ This code is written to run in local
 5. run DataInjection file
 6. Similarly add "confi.json" to parameter of MovieApi file and run MovieApi file
 
-#How to use API
-1. In your browser hit API endpoint - /v1/movie/<movieId>
+# How to use API
+1. In your browser hit API endpoint - /v1/movie/movieId
 2. movieId is an integer which refers to the id of the movie you want to fetch
 3. for example - http://127.0.0.1:5000/v1/movie/1

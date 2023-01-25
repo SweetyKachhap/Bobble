@@ -1,7 +1,5 @@
-import json
-import sys
 from MovieTableSchema import Movies
-from bobble.DataCollection.DatabaseUtil import Util
+from bobble.DataCollection.DatabaseConnection import DatabaseConnection
 
 data = [
     {"movieId": 1,
@@ -29,15 +27,13 @@ data = [
      "overview": "This is a action film, revolves around a life of a boy and his friends",
      "release_date": "2007-09-09"},
 ]
-conf_file = sys.argv[1]
-conf = json.load(open(conf_file))
 
-connection = Util(conf["user"], conf["password"], conf["host"], conf["port"], conf["database"])
-connection.createTable(Movies)
 all_data = []
+db_connect = DatabaseConnection()
+db_connect.connection.createTable(Movies)
 for each_data in data:
     all_data.append(Movies(each_data["movieId"], each_data["title"], each_data["poster_path"], each_data["language"],
                            each_data["overview"], each_data["release_date"]))
 
-connection.bulk_add(data=all_data)
-connection.commit_changes()
+db_connect.connection.bulk_add(data=all_data)
+db_connect.connection.commit_changes()
