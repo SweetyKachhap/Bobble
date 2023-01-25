@@ -1,7 +1,7 @@
 import json
 import sys
 from MovieTableSchema import Movies
-from DatabaseUtil import Util
+from bobble.DataCollection.DatabaseUtil import Util
 
 data = [
     {"movieId": 1,

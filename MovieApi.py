@@ -2,12 +2,13 @@ import json
 import sys
 from flask import Flask, jsonify
 from flask_restful import Resource, Api
-from DatabaseUtil import Util
+from bobble.DataCollection.DatabaseUtil import Util
 
 app = Flask(__name__)
 api = Api(app)
 conf_file = sys.argv[1]
 conf = json.load(open(conf_file))
+app.config['JSON_SORT_KEYS'] = False
 try:
     connection = Util(conf["user"], conf["password"], conf["host"], conf["port"], conf["database"])
     print("connected to database")
